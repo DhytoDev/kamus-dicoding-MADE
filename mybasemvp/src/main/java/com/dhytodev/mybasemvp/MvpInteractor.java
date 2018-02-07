@@ -7,5 +7,5 @@ package com.dhytodev.mybasemvp;
 
 public interface MvpInteractor<T> {
 
-    T getService();
+    T getPreferencesHelper();
 }

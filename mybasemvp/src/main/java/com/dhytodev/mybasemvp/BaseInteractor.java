@@ -7,14 +7,14 @@ package com.dhytodev.mybasemvp;
 
 public class BaseInteractor<T> implements MvpInteractor<T> {
 
-    private T service;
+    private T preferencesHelper;
 
-    public BaseInteractor(T service) {
-        this.service = service;
+    public BaseInteractor(T preferencesHelper) {
+        this.preferencesHelper = preferencesHelper;
     }
 
     @Override
-    public T getService() {
-        return service;
+    public T getPreferencesHelper() {
+        return preferencesHelper;
     }
 }
