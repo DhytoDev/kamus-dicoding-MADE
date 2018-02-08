@@ -25,7 +25,7 @@ public class BasePresenter <V extends MvpView, I extends MvpInteractor> implemen
 
     @Override
     public void onDetach() {
-        compositeDisposable.dispose();
+        compositeDisposable.clear();
         mvpView = null ;
         mvpInteractor =null ;
     }

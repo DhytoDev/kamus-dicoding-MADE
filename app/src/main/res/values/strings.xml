@@ -10,4 +10,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="translate">TERJEMAHAN</string>
+    <string name="search_by_meaning">Cari makna kata</string>
+    <string name="button_clear">button clear</string>
 </resources>

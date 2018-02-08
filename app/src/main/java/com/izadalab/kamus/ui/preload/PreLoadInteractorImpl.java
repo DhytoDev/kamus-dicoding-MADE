@@ -22,7 +22,7 @@ import io.reactivex.Observable;
 public class PreLoadInteractorImpl extends BaseInteractor<PreferencesHelper> implements PreLoadInteractor {
 
     private Context context;
-    private double progress ;
+    private double progress;
     private double maxProgress = 100;
 
     public PreLoadInteractorImpl(PreferencesHelper preferencesHelper, Context context) {
@@ -69,19 +69,23 @@ public class PreLoadInteractorImpl extends BaseInteractor<PreferencesHelper> imp
                 double progressDiff = (progressMaxInsert - progress) / (engInaDictionaries.size()
                         + inaEngDictionaries.size() * 1000);
 
-                DatabaseManager.getInstance(context).insertTransaction(engInaDictionaries, true);
-                progress += progressDiff;
-                e.onNext((int) progress);
+                try {
+                    DatabaseManager.getInstance(context).insertTransaction(engInaDictionaries, true);
+                    progress += progressDiff;
+                    e.onNext((int) progress);
 
-                DatabaseManager.getInstance(context).insertTransaction(inaEngDictionaries, false);
-                progress += progressDiff;
-                e.onNext((int) progress);
+                    DatabaseManager.getInstance(context).insertTransaction(inaEngDictionaries, false);
+                    progress += progressDiff;
+                    e.onNext((int) progress);
 
-                DatabaseManager.getInstance(context).close();
-                getPreferencesHelper().setFirstRun(false);
+                    getPreferencesHelper().setFirstRun(false);
 
-                e.onNext((int) maxProgress);
-                e.onComplete();
+                    e.onNext((int) maxProgress);
+                } catch (Exception err) {
+                    e.onError(err);
+                } finally {
+                    e.onComplete();
+                }
             } else {
                 try {
                     synchronized (this) {
