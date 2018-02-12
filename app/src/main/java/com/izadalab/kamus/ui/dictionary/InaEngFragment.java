@@ -32,7 +32,6 @@ public class InaEngFragment extends DictionaryFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String query = savedInstanceState != null ? savedInstanceState.getString("query") : null;
 
         presenter.fetchAllData(false);
 
@@ -57,6 +56,6 @@ public class InaEngFragment extends DictionaryFragment {
     @OnClick(R.id.btn_clear)
     void onClearBtnClicked() {
         searchBar.setText("");
-        presenter.fetchAllData(true);
+        presenter.fetchAllData(false);
     }
 }

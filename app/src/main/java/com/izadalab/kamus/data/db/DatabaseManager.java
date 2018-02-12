@@ -57,7 +57,7 @@ public class DatabaseManager {
         mDb.endTransaction();
     }
 
-    public Cursor searchByWord(String query, boolean isEnglish) {
+    public Cursor selectByWord(String query, boolean isEnglish) {
         String DB_TABLE_NAME = isEnglish ? TABLE_ENG_INA : TABLE_INA_ENG;
         return mDb.rawQuery("SELECT * FROM " + DB_TABLE_NAME +
                 " WHERE " + COLUMN_WORD + " LIKE '%" + query.trim() + "%'", null);

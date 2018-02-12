@@ -31,7 +31,7 @@ public class DictionaryInteractorImpl extends BaseInteractor<PreferencesHelper> 
         return Observable.create(e -> {
             List<Dictionary> dictionaries = new ArrayList<>();
 
-            final Cursor cursor = DatabaseManager.getInstance(context).searchByWord(query, isEnglish);
+            final Cursor cursor = DatabaseManager.getInstance(context).selectByWord(query, isEnglish);
 
             if (cursor.moveToFirst()) {
                 do {

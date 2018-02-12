@@ -1,15 +1,9 @@
 package com.izadalab.kamus.ui.dictionary;
 
-import android.util.Log;
-
 import com.dhytodev.mybasemvp.BasePresenter;
-import com.izadalab.kamus.data.db.DatabaseManager;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by izadalab on 08/02/18.
